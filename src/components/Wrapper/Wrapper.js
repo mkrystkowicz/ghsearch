@@ -1,7 +1,8 @@
 import classes from './Wrapper.module.scss';
+import { motion } from 'framer-motion';
 import colors from '../../helpers/colors.contants';
 
-const Wrapper = ({ children, color, className }) => {
+const Wrapper = ({ children, color, className, ...props }) => {
   let combinedClasses = [classes.Wrapper];
 
   if (color === colors.BLACK) {
@@ -10,7 +11,11 @@ const Wrapper = ({ children, color, className }) => {
     combinedClasses = [...combinedClasses, className, classes.WhiteBackground].join(' ');
   }
 
-  return <div className={combinedClasses}>{children}</div>;
+  return (
+    <motion.div className={combinedClasses} {...props}>
+      {children}
+    </motion.div>
+  );
 };
 
 export default Wrapper;

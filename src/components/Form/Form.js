@@ -1,13 +1,14 @@
+import { motion } from 'framer-motion';
 import Input from './Input';
 import SearchButton from './SearchButton';
 import classes from './Form.module.scss';
 
-const Form = () => {
+const Form = ({ ...props }) => {
   return (
-    <form className={classes.Form}>
+    <motion.form className={classes.Form} {...props}>
       <Input placeholder="Github name" />
       <SearchButton />
-    </form>
+    </motion.form>
   );
 };
 
