@@ -1,0 +1,23 @@
+@import '../../index.scss';
+
+.Input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid $black;
+  outline: none;
+  padding: 1rem;
+  transition: all 0.2s ease-out;
+
+  &::placeholder {
+    color: $gray;
+  }
+
+  &:focus {
+    color: $black;
+    border-bottom: 1px solid $emerald;
+  }
+
+  @media (min-width: 500px) {
+    font-size: 1.5rem;
+  }
+}

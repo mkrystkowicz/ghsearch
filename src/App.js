@@ -1,5 +1,10 @@
+import { useState } from 'react';
+import SearchingView from './views/SearchingView';
+
 function App() {
-  return <h1>Hello world</h1>;
+  const [isSearching, setIsSearching] = useState(true);
+
+  return <SearchingView />;
 }
 
 export default App;
