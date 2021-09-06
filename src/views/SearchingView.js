@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import Wrapper from "../components/Wrapper/Wrapper"
 import Logo from "../components/Logo/Logo"
 import Form from "../components/Form/Form"
@@ -11,8 +12,7 @@ const ViewWrapperVariants = {
     opacity: 1,
     transition: {
       ease: "easeOut",
-      duration: 1,
-      when: "beforeChildren",
+      duration: 0.5,
     },
   },
 }
@@ -38,7 +38,7 @@ const SearchWrapperChildrenVariants = {
   },
 }
 
-const SearchingView = () => {
+const SearchingView = ({ onGetData }) => {
   return (
     <Wrapper
       initial="hidden"
@@ -49,10 +49,14 @@ const SearchingView = () => {
     >
       <Wrapper variants={SearchWrapperVariants} className={classes.SearchWrapper} color={colors.WHITE}>
         <Logo variants={SearchWrapperChildrenVariants} />
-        <Form variants={SearchWrapperChildrenVariants} />
+        <Form onSubmit={onGetData} variants={SearchWrapperChildrenVariants} />
       </Wrapper>
     </Wrapper>
   )
+}
+
+SearchingView.propTypes = {
+  onGetData: PropTypes.func.isRequired,
 }
 
 export default SearchingView
