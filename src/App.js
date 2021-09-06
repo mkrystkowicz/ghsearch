@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import SearchingView from './views/SearchingView';
+import React from "react"
+import SearchingView from "./views/SearchingView"
 
 function App() {
-  const [isSearching, setIsSearching] = useState(true);
+  // const [isSearching, setIsSearching] = useState(true)
 
-  return <SearchingView />;
+  return <SearchingView />
 }
 
-export default App;
+export default App

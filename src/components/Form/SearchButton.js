@@ -1,11 +1,12 @@
-import classes from './SearchButton.module.scss';
+import React from "react"
+import classes from "./SearchButton.module.scss"
 
 const SearchButton = () => {
   return (
-    <button className={classes.SearchButton}>
-      <i class="fas fa-search"></i>
+    <button className={classes.SearchButton} type="button">
+      <i className="fas fa-search" />
     </button>
-  );
-};
+  )
+}
 
-export default SearchButton;
+export default SearchButton
