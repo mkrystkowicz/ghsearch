@@ -21,7 +21,7 @@ const Wrapper = ({ children, color, className, ...props }) => {
 }
 
 Wrapper.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
   color: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
 }
