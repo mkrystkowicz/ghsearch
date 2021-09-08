@@ -17,11 +17,11 @@ const useSearch = url => {
         setValue(data)
       })
       .catch(err => {
-        setStatus(statuses.ERROR)
         setError({
           error: true,
-          errorMessage: err.message,
+          message: err.message,
         })
+        setStatus(statuses.ERROR)
       })
   }, [url])
 
