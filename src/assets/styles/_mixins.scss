@@ -1,0 +1,47 @@
+$breakpoints: (
+  mobile-lg: 508px,
+  tablet: 768px,
+  laptop: 1400px,
+  desktop-lg: 2000px,
+);
+
+@mixin breakpoint($breakpoint, $direction) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @if $direction == max {
+      @media (max-width: ($breakpoint-value - 1)) {
+        @content;
+      }
+    } @else if $direction == min {
+      @media (min-width: $breakpoint-value) {
+        @content;
+      }
+    } @else {
+      @media ($direction: $breakpoint-value) {
+        @content;
+      }
+    }
+  } @else {
+    @if $direction == max {
+      @media (max-width: $breakpoint) {
+        @content;
+      }
+    } @else if $direction == min {
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    } @else {
+      @media ($direction: $breakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin flex($align, $justify, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}

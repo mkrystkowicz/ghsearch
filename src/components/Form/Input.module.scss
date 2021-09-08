@@ -1,4 +1,6 @@
-@import "../../index.scss";
+@import "../../assets/styles/globalStyles.scss";
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
 
 .Input {
   background: transparent;
@@ -17,7 +19,16 @@
     border-bottom: 1px solid $emerald;
   }
 
-  @media (min-width: 500px) {
+  @include breakpoint(mobile-lg, min) {
     font-size: 1.5rem;
+  }
+
+  @include breakpoint(tablet, min) {
+    font-size: 1.8rem;
+    flex-basis: 70%;
+  }
+
+  @include breakpoint(desktop-lg, min) {
+    font-size: 2.2rem;
   }
 }
