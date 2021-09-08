@@ -55,11 +55,8 @@ const SearchingView = ({ onSetUser, status, error }) => {
     >
       <Wrapper variants={SearchWrapperVariants} className={classes.SearchWrapper} color={colors.WHITE}>
         <Logo variants={SearchWrapperChildrenVariants} />
-        {status !== statuses.PENDING && <Form onSubmit={handleFormSubmit} variants={SearchWrapperChildrenVariants} />}
-        {status === statuses.ERROR && (
-          <p className={classes.ErrorMessage}>
-            {error.message ? error.message : "Something went wrong"}, please try again!
-          </p>
+        {status !== statuses.PENDING && (
+          <Form error={error} onSubmit={handleFormSubmit} variants={SearchWrapperChildrenVariants} />
         )}
         {status === statuses.PENDING && <LoadingSpinner />}
       </Wrapper>

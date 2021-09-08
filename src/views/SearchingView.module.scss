@@ -21,19 +21,6 @@
   align-items: center;
   justify-content: space-evenly;
 
-  & .ErrorMessage {
-    color: $red;
-    font-size: 1.2rem;
-    margin-top: -6rem;
-    width: inherit;
-    text-align: center;
-
-    @media (min-width: 500px) {
-      font-size: 1.4rem;
-      margin-top: -1rem;
-    }
-  }
-
   @media (min-width: 500px) {
     padding: 3rem;
     height: 35%;

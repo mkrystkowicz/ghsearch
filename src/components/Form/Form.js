@@ -5,7 +5,7 @@ import Input from "./Input"
 import SearchButton from "./SearchButton"
 import classes from "./Form.module.scss"
 
-const Form = ({ onSubmit, ...props }) => {
+const Form = ({ onSubmit, error, ...props }) => {
   const [username, setUsername] = useState()
 
   const handleFormSubmit = e => {
@@ -21,12 +21,25 @@ const Form = ({ onSubmit, ...props }) => {
     <motion.form onSubmit={handleFormSubmit} className={classes.Form} {...props}>
       <Input onInputChange={handleInputChange} value={username} placeholder="Github name" />
       <SearchButton />
+      {error && (
+        <p className={classes.ErrorMessage}>
+          {error.message ? error.message : "Something went wrong"}, please try again!
+        </p>
+      )}
     </motion.form>
   )
 }
 
 Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  error: PropTypes.shape({
+    error: PropTypes.bool,
+    message: PropTypes.string,
+  }),
+}
+
+Form.defaultProps = {
+  error: null,
 }
 
 export default Form
