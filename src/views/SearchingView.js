@@ -38,7 +38,11 @@ const SearchWrapperChildrenVariants = {
   },
 }
 
-const SearchingView = ({ onGetData }) => {
+const SearchingView = ({ onSetUser }) => {
+  const handleFormSubmit = name => {
+    onSetUser(name)
+  }
+
   return (
     <Wrapper
       initial="hidden"
@@ -49,14 +53,14 @@ const SearchingView = ({ onGetData }) => {
     >
       <Wrapper variants={SearchWrapperVariants} className={classes.SearchWrapper} color={colors.WHITE}>
         <Logo variants={SearchWrapperChildrenVariants} />
-        <Form onSubmit={onGetData} variants={SearchWrapperChildrenVariants} />
+        <Form onSubmit={handleFormSubmit} variants={SearchWrapperChildrenVariants} />
       </Wrapper>
     </Wrapper>
   )
 }
 
 SearchingView.propTypes = {
-  onGetData: PropTypes.func.isRequired,
+  onSetUser: PropTypes.func.isRequired,
 }
 
 export default SearchingView
