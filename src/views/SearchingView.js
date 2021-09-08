@@ -1,9 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Wrapper from "../components/Wrapper/Wrapper"
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner"
 import Logo from "../components/Logo/Logo"
 import Form from "../components/Form/Form"
 import colors from "../helpers/colors.contants"
+import statuses from "../helpers/statuses.contants"
 import classes from "./SearchingView.module.scss"
 
 const ViewWrapperVariants = {
@@ -38,7 +40,7 @@ const SearchWrapperChildrenVariants = {
   },
 }
 
-const SearchingView = ({ onSetUser }) => {
+const SearchingView = ({ onSetUser, status, error }) => {
   const handleFormSubmit = name => {
     onSetUser(name)
   }
@@ -53,14 +55,29 @@ const SearchingView = ({ onSetUser }) => {
     >
       <Wrapper variants={SearchWrapperVariants} className={classes.SearchWrapper} color={colors.WHITE}>
         <Logo variants={SearchWrapperChildrenVariants} />
-        <Form onSubmit={handleFormSubmit} variants={SearchWrapperChildrenVariants} />
+        {status !== statuses.PENDING && <Form onSubmit={handleFormSubmit} variants={SearchWrapperChildrenVariants} />}
+        {status === statuses.ERROR && (
+          <p className={classes.ErrorMessage}>
+            {error.message ? error.message : "Something went wrong"}, please try again!
+          </p>
+        )}
+        {status === statuses.PENDING && <LoadingSpinner />}
       </Wrapper>
     </Wrapper>
   )
 }
-
 SearchingView.propTypes = {
   onSetUser: PropTypes.func.isRequired,
+  status: PropTypes.string,
+  error: PropTypes.shape({
+    error: PropTypes.bool,
+    message: PropTypes.string,
+  }),
+}
+
+SearchingView.defaultProps = {
+  status: statuses.IDLE,
+  error: null,
 }
 
 export default SearchingView
