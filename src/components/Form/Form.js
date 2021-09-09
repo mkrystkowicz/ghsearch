@@ -21,7 +21,7 @@ const Form = ({ onSubmit, error, ...props }) => {
   return (
     <motion.form onSubmit={handleFormSubmit} className={classes.Form} {...props}>
       <Input onInputChange={handleInputChange} value={username} placeholder="Github name" />
-      <Button color={colors.Black} icon="fas fa-search" />
+      <Button color={colors.BLACK} icon="fas fa-search" />
       {error && (
         <p className={classes.ErrorMessage}>
           {error.message ? error.message : "Something went wrong"}, please try again!
