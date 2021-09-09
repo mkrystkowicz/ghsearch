@@ -45,3 +45,19 @@ $breakpoints: (
   align-items: $align;
   justify-content: $justify;
 }
+
+@mixin font {
+  font-size: 1.3rem;
+
+  @include breakpoint(mobile-lg, min) {
+    font-size: 1.5rem;
+  }
+
+  @include breakpoint(tablet, min) {
+    font-size: 1.8rem;
+  }
+
+  @include breakpoint(desktop-lg, min) {
+    font-size: 2.2rem;
+  }
+}
