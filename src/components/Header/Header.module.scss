@@ -1,6 +1,8 @@
 @import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
 
 .Header {
   @include flex(center, space-between);
   padding: 3rem;
+  box-shadow: rgba($black, 0.16) 0px 3px 6px, rgba($black, 0.23) 0px 3px 6px;
 }

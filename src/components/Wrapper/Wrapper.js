@@ -23,7 +23,11 @@ const Wrapper = ({ children, color, className, ...props }) => {
 Wrapper.propTypes = {
   children: PropTypes.node.isRequired,
   color: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+}
+
+Wrapper.defaultProps = {
+  className: "",
 }
 
 export default Wrapper

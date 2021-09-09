@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import colors from "../../helpers/colors.contants"
 import classes from "./Button.module.scss"
 
-const Button = ({ icon, color }) => {
+const Button = ({ icon, color, ...props }) => {
   let combinedClasses = [classes.Button]
 
   if (color === colors.BLACK) {
@@ -13,7 +13,7 @@ const Button = ({ icon, color }) => {
   }
 
   return (
-    <button className={combinedClasses} type="submit">
+    <button className={combinedClasses} type="submit" {...props}>
       <i className={icon} />
     </button>
   )
