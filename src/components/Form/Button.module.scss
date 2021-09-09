@@ -8,8 +8,15 @@
   border: none;
   cursor: pointer;
 
-  i {
+  &.Black {
     color: $black;
+  }
+
+  &.White {
+    color: $white;
+  }
+
+  i {
     transition: all 0.2s ease-out;
   }
 

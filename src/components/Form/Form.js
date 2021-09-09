@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Input from "./Input"
 import Button from "./Button"
 import classes from "./Form.module.scss"
+import colors from "../../helpers/colors.contants"
 
 const Form = ({ onSubmit, error, ...props }) => {
   const [username, setUsername] = useState()
@@ -20,7 +21,7 @@ const Form = ({ onSubmit, error, ...props }) => {
   return (
     <motion.form onSubmit={handleFormSubmit} className={classes.Form} {...props}>
       <Input onInputChange={handleInputChange} value={username} placeholder="Github name" />
-      <Button icon="fas fa-search" />
+      <Button color={colors.Black} icon="fas fa-search" />
       {error && (
         <p className={classes.ErrorMessage}>
           {error.message ? error.message : "Something went wrong"}, please try again!
