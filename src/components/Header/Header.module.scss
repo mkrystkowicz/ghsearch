@@ -3,6 +3,37 @@
 
 .Header {
   @include flex(center, space-between);
+  flex-wrap: wrap;
   padding: 3rem;
   box-shadow: rgba($black, 0.16) 0px 3px 6px, rgba($black, 0.23) 0px 3px 6px;
+
+  .HeaderExpanded {
+    @include font;
+    margin-top: 3rem;
+    flex-basis: 100%;
+
+    .VerticalItems p {
+      margin-bottom: 0.6rem;
+    }
+
+    .HorizontalItems {
+      @include flex(center, space-around);
+      margin-top: 2.5rem;
+    }
+
+    .HorizontalItems .ItemContainer {
+      @include flex(center, center, column);
+      padding: 1.8rem;
+    }
+
+    .HorizontalItems .ItemContainer span {
+      font-size: 2.5rem;
+      color: $emerald;
+    }
+
+    .HorizontalItems .ItemContainer:nth-child(2) {
+      border-left: 1px dashed $gray;
+      border-right: 1px dashed $gray;
+    }
+  }
 }
