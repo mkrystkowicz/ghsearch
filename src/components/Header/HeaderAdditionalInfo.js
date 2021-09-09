@@ -1,10 +1,16 @@
 import React from "react"
+import { motion } from "framer-motion"
 import PropTypes from "prop-types"
 import classes from "./Header.module.scss"
 
+const headerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+}
+
 const HeaderAdditionalInfo = ({ location, email, company, repos, following, followers, twitter }) => {
   return (
-    <div className={classes.HeaderExpanded}>
+    <motion.div initial="hidden" animate="visible" variants={headerVariants} className={classes.HeaderExpanded}>
       <div className={classes.VerticalItems}>
         {location && <p>Location: {location}</p>}
         {email && <p>E-mail: {email}</p>}
@@ -18,14 +24,14 @@ const HeaderAdditionalInfo = ({ location, email, company, repos, following, foll
         </div>
         <div className={classes.ItemContainer}>
           <span>{following}</span>
-          <p>Following:</p>
+          <p>Following</p>
         </div>
         <div className={classes.ItemContainer}>
           <span>{followers}</span>
-          <p>Followers:</p>
+          <p>Followers</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
