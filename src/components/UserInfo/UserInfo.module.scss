@@ -1,4 +1,5 @@
 @import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
 
 .UserInfo {
   @include flex(center, flex-start);
@@ -6,5 +7,24 @@
   .Username {
     @include font;
     margin-left: 1.5rem;
+    position: relative;
+
+    &.ForHire {
+      &::after {
+        content: "FOR HIRE";
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 0.6rem;
+        width: 4rem;
+        padding: 0.2rem;
+        transform: translate(75%, -50%) rotate(45deg);
+        transform-origin: top;
+        text-align: center;
+        color: $white;
+        background-color: $red;
+      }
+    }
   }
 }
