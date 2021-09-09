@@ -1,0 +1,10 @@
+@import "../../assets/styles/mixins";
+
+.UserInfo {
+  @include flex(center, flex-start);
+
+  .Username {
+    @include font;
+    margin-left: 1.5rem;
+  }
+}

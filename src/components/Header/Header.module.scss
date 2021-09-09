@@ -1,0 +1,6 @@
+@import "../../assets/styles/mixins";
+
+.Header {
+  @include flex(center, space-between);
+  padding: 3rem;
+}
