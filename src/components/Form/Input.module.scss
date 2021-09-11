@@ -5,18 +5,26 @@
 .Input {
   background: transparent;
   border: none;
-  border-bottom: 1px solid $black;
   outline: none;
   padding: 1rem;
   transition: all 0.2s ease-out;
 
-  &::placeholder {
-    color: $gray;
+  &.Black {
+    border-bottom: 1px solid $black;
+    color: $black;
+  }
+
+  &.White {
+    border-bottom: 1px solid $white;
+    color: $white;
   }
 
   &:focus {
-    color: $black;
     border-bottom: 1px solid $emerald;
+  }
+
+  &::placeholder {
+    color: $gray;
   }
 
   @include breakpoint(mobile-lg, min) {

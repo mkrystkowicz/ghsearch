@@ -4,9 +4,8 @@ import { motion } from "framer-motion"
 import Input from "./Input"
 import Button from "./Button"
 import classes from "./Form.module.scss"
-import colors from "../../helpers/colors.contants"
 
-const Form = ({ onSubmit, error, ...props }) => {
+const Form = ({ color, onSubmit, error, ...props }) => {
   const [username, setUsername] = useState()
 
   const handleFormSubmit = e => {
@@ -20,8 +19,8 @@ const Form = ({ onSubmit, error, ...props }) => {
 
   return (
     <motion.form onSubmit={handleFormSubmit} className={classes.Form} {...props}>
-      <Input onInputChange={handleInputChange} value={username} placeholder="Github name" />
-      <Button color={colors.BLACK} icon="fas fa-search" />
+      <Input color={color} onInputChange={handleInputChange} value={username} placeholder="Github name" />
+      <Button color={color} icon="fas fa-search" />
       {error && (
         <p className={classes.ErrorMessage}>
           {error.message ? error.message : "Something went wrong"}, please try again!
@@ -33,6 +32,7 @@ const Form = ({ onSubmit, error, ...props }) => {
 
 Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
   error: PropTypes.shape({
     error: PropTypes.bool,
     message: PropTypes.string,

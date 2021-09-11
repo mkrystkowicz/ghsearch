@@ -26,10 +26,10 @@
 
     .HorizontalItems {
       @include flex(center, space-around);
-      margin-top: 2.5rem;
+      margin: 2.5rem 0;
 
       @include breakpoint(tablet, min) {
-        margin-top: 5rem;
+        margin: 5rem 0;
       }
     }
 

@@ -6,9 +6,11 @@ import UserInfo from "../UserInfo/UserInfo"
 import Button from "../Form/Button"
 import classes from "./Header.module.scss"
 import isMobile from "../../helpers/isMobile"
+import Form from "../Form/Form"
 
 const Header = ({
   userData: { avatarUrl, name, hireable, location, email, company, publicRepos, following, followers, twitterUsername },
+  onAddUser,
 }) => {
   const mobile = isMobile()
   const [isActive, setIsActive] = useState(false)
@@ -32,12 +34,14 @@ const Header = ({
           twitter={twitterUsername}
         />
       )}
+      {!isActive && mobile ? null : <Form onSubmit={onAddUser} color={colors.WHITE} />}
     </header>
   )
 }
 
 Header.propTypes = {
   userData: PropTypes.objectOf(PropTypes.any).isRequired,
+  onAddUser: PropTypes.func.isRequired,
 }
 
 export default Header
