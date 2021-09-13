@@ -56,13 +56,19 @@ const SearchingView = ({ onSetUser, status, error }) => {
       <Wrapper variants={SearchWrapperVariants} className={classes.SearchWrapper} color={colors.WHITE}>
         <Logo variants={SearchWrapperChildrenVariants} />
         {status !== statuses.PENDING && (
-          <Form error={error} onSubmit={handleFormSubmit} variants={SearchWrapperChildrenVariants} />
+          <Form
+            color={colors.BLACK}
+            error={error}
+            onSubmit={handleFormSubmit}
+            variants={SearchWrapperChildrenVariants}
+          />
         )}
         {status === statuses.PENDING && <LoadingSpinner />}
       </Wrapper>
     </Wrapper>
   )
 }
+
 SearchingView.propTypes = {
   onSetUser: PropTypes.func.isRequired,
   status: PropTypes.string,
