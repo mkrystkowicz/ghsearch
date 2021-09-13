@@ -26,6 +26,7 @@
 
   @include breakpoint(mobile-lg, min) {
     font-size: 1.5rem;
+    flex-basis: 20%;
   }
 
   @include breakpoint(tablet, min) {

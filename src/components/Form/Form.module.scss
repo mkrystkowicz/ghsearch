@@ -5,7 +5,7 @@
 .Form {
   @include flex(center, center);
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
 
   & .ErrorMessage {
     color: $red;
@@ -17,9 +17,5 @@
     @include breakpoint(mobile-lg, min) {
       font-size: 1.4rem;
     }
-  }
-
-  @include breakpoint(mobile-lg, min) {
-    justify-content: space-evenly;
   }
 }

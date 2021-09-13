@@ -36,6 +36,15 @@
     .HorizontalItems .ItemContainer {
       @include flex(center, center, column);
       padding: 1.8rem;
+      flex-basis: 30%;
+
+      @include breakpoint(mobile-lg, min) {
+        padding: 3rem;
+      }
+
+      @include breakpoint(tablet, min) {
+        padding: 1.8rem;
+      }
     }
 
     .HorizontalItems .ItemContainer span {
