@@ -40,8 +40,12 @@ const Header = ({
 }
 
 Header.propTypes = {
-  userData: PropTypes.objectOf(PropTypes.any).isRequired,
+  userData: PropTypes.objectOf(PropTypes.any),
   onAddUser: PropTypes.func.isRequired,
+}
+
+Header.defaultProps = {
+  userData: {},
 }
 
 export default Header
