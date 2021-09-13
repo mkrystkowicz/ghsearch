@@ -19,10 +19,17 @@ const UserInfo = ({ username, hireable, avatarUrl }) => {
     </div>
   )
 }
+
 UserInfo.propTypes = {
-  username: PropTypes.string.isRequired,
-  hireable: PropTypes.bool.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
+  username: PropTypes.string,
+  hireable: PropTypes.bool,
+  avatarUrl: PropTypes.string,
+}
+
+UserInfo.defaultProps = {
+  username: "",
+  hireable: false,
+  avatarUrl: "",
 }
 
 export default UserInfo

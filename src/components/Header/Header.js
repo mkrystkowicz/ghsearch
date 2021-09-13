@@ -10,7 +10,7 @@ import Form from "../Form/Form"
 
 const Header = ({
   userData: { avatarUrl, name, hireable, location, email, company, publicRepos, following, followers, twitterUsername },
-  onAddUser,
+  onSetUser,
 }) => {
   const mobile = isMobile()
   const [isActive, setIsActive] = useState(false)
@@ -34,14 +34,14 @@ const Header = ({
           twitter={twitterUsername}
         />
       )}
-      {!isActive && mobile ? null : <Form onSubmit={onAddUser} color={colors.WHITE} />}
+      {!isActive && mobile ? null : <Form onSubmit={onSetUser} color={colors.WHITE} />}
     </header>
   )
 }
 
 Header.propTypes = {
   userData: PropTypes.objectOf(PropTypes.any),
-  onAddUser: PropTypes.func.isRequired,
+  onSetUser: PropTypes.func.isRequired,
 }
 
 Header.defaultProps = {
