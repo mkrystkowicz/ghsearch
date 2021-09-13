@@ -16,12 +16,12 @@ const Form = ({ color, onSubmit, error, ...props }) => {
   const handleInputChange = ({ target: { value } }) => {
     setUsername(value)
   }
-
+  console.log(error)
   return (
     <motion.form onSubmit={handleFormSubmit} className={classes.Form} {...props}>
       <Input color={color} onInputChange={handleInputChange} value={username} placeholder="Github name" />
       <Button color={color} icon="fas fa-search" />
-      {error && (
+      {error.error === true && (
         <p className={classes.ErrorMessage}>
           {error.message ? error.message : "Something went wrong"}, please try again!
         </p>
@@ -40,7 +40,7 @@ Form.propTypes = {
 }
 
 Form.defaultProps = {
-  error: null,
+  error: { error: false, message: "" },
 }
 
 export default Form
