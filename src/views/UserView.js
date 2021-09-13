@@ -10,8 +10,10 @@ import Header from "../components/Header/Header"
 import Wrapper from "../components/Wrapper/Wrapper"
 import colors from "../helpers/colors.contants"
 import classes from "./UserView.module.scss"
+import useMobile from "../hooks/useMobile"
 
-const UserView = ({ mobile, onAddUser, userInfo }) => {
+const UserView = ({ onSetUser, userInfo }) => {
+  const mobile = useMobile()
   const userInfoCamelled = _.mapKeys(userInfo, (v, k) => _.camelCase(k))
 
   return (
@@ -23,13 +25,14 @@ const UserView = ({ mobile, onAddUser, userInfo }) => {
       color={colors.WHITE}
     >
       <Wrapper
+        key={mobile}
         className={classes.HeaderWrapper}
         initial="hidden"
         animate="visible"
         variants={mobile ? headerWrapperVariants : headerDesktopWrapperVariants}
         color={colors.BLACK}
       >
-        <Header onAddUser={onAddUser} userData={userInfoCamelled} />
+        <Header onSetUser={onSetUser} userData={userInfoCamelled} />
       </Wrapper>
     </Wrapper>
   )
@@ -37,8 +40,8 @@ const UserView = ({ mobile, onAddUser, userInfo }) => {
 
 UserView.propTypes = {
   userInfo: PropTypes.objectOf(PropTypes.any),
-  onAddUser: PropTypes.func.isRequired,
-  mobile: PropTypes.bool.isRequired,
+  onSetUser: PropTypes.func.isRequired,
+  // mobile: PropTypes.bool.isRequired,
 }
 
 UserView.defaultProps = {
