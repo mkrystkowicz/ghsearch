@@ -13,9 +13,10 @@ import colors from "../helpers/colors.contants"
 import statuses from "../helpers/statuses.contants"
 import classes from "./SearchingView.module.scss"
 
-const SearchingView = ({ onSetUser, status, error }) => {
+const SearchingView = ({ setIsSearching, onSetUser, status, error }) => {
   const handleFormSubmit = name => {
     onSetUser(name)
+    setIsSearching(prevState => !prevState)
   }
 
   return (
@@ -27,6 +28,7 @@ const SearchingView = ({ onSetUser, status, error }) => {
       color={colors.BLACK}
     >
       <Wrapper variants={searchWrapperVariants} className={classes.SearchWrapper} color={colors.WHITE}>
+        {" "}
         <Logo variants={searchWrapperChildrenVariants} />
         {status !== statuses.PENDING && (
           <Form
@@ -43,6 +45,7 @@ const SearchingView = ({ onSetUser, status, error }) => {
 }
 
 SearchingView.propTypes = {
+  setIsSearching: PropTypes.func.isRequired,
   onSetUser: PropTypes.func.isRequired,
   status: PropTypes.string,
   error: PropTypes.shape({
