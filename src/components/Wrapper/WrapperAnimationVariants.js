@@ -37,3 +37,24 @@ export const headerDesktopWrapperVariants = {
     },
   },
 }
+
+export const searchWrapperVariants = {
+  hidden: { y: "-50%", x: "-50%", opacity: 0, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      ease: "easeOut",
+      duration: 0.3,
+      when: "beforeChildren",
+    },
+  },
+}
+
+export const searchWrapperChildrenVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { ease: "easeOut", duration: 0.3 },
+  },
+}

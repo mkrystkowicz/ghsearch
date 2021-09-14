@@ -1,5 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
+import {
+  viewWrapperVariants,
+  searchWrapperVariants,
+  searchWrapperChildrenVariants,
+} from "../components/Wrapper/WrapperAnimationVariants"
 import Wrapper from "../components/Wrapper/Wrapper"
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner"
 import Logo from "../components/Logo/Logo"
@@ -7,38 +12,6 @@ import Form from "../components/Form/Form"
 import colors from "../helpers/colors.contants"
 import statuses from "../helpers/statuses.contants"
 import classes from "./SearchingView.module.scss"
-
-const ViewWrapperVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      ease: "easeOut",
-      duration: 0.5,
-    },
-  },
-}
-
-const SearchWrapperVariants = {
-  hidden: { y: "-50%", x: "-50%", opacity: 0, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      ease: "easeOut",
-      duration: 0.3,
-      when: "beforeChildren",
-    },
-  },
-}
-
-const SearchWrapperChildrenVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { ease: "easeOut", duration: 0.3 },
-  },
-}
 
 const SearchingView = ({ onSetUser, status, error }) => {
   const handleFormSubmit = name => {
@@ -49,18 +22,18 @@ const SearchingView = ({ onSetUser, status, error }) => {
     <Wrapper
       initial="hidden"
       animate="visible"
-      variants={ViewWrapperVariants}
+      variants={viewWrapperVariants}
       className={classes.ViewWrapper}
       color={colors.BLACK}
     >
-      <Wrapper variants={SearchWrapperVariants} className={classes.SearchWrapper} color={colors.WHITE}>
-        <Logo variants={SearchWrapperChildrenVariants} />
+      <Wrapper variants={searchWrapperVariants} className={classes.SearchWrapper} color={colors.WHITE}>
+        <Logo variants={searchWrapperChildrenVariants} />
         {status !== statuses.PENDING && (
           <Form
             color={colors.BLACK}
             error={error}
             onSubmit={handleFormSubmit}
-            variants={SearchWrapperChildrenVariants}
+            variants={searchWrapperChildrenVariants}
           />
         )}
         {status === statuses.PENDING && <LoadingSpinner />}
