@@ -1,6 +1,8 @@
 import React from "react"
 import { motion } from "framer-motion"
 import PropTypes from "prop-types"
+import normalizeHttpAddress from "../../helpers/normalizeHttp"
+import checkIfQuoted from "../../helpers/checkQuoted"
 import classes from "./Header.module.scss"
 
 const TWITTER_URL = `twitter.com/`
@@ -10,22 +12,20 @@ const headerVariants = {
   visible: { opacity: 1 },
 }
 
-const checkIfQuoted = string => {
-  if (
-    string.startsWith('"') ||
-    string.endsWith('"') ||
-    string.startsWith("'") ||
-    string.endsWith("'") ||
-    string.startsWith("`") ||
-    string.endsWith("`")
-  ) {
-    return true
-  }
-
-  return false
-}
-
-const HeaderAdditionalInfo = ({ location, email, company, repos, following, followers, twitter, blog, bio }) => {
+const HeaderAdditionalInfo = ({
+  location,
+  email,
+  company,
+  repos,
+  following,
+  followers,
+  twitter: twitterName,
+  blog,
+  bio,
+}) => {
+  const fullTwitterUrl = TWITTER_URL + twitterName
+  const normalizedTwitterAddress = normalizeHttpAddress(fullTwitterUrl)
+  const normalizedBlogAddress = normalizeHttpAddress(blog)
   const getQuotedBio = () => {
     if (checkIfQuoted(bio)) return <p className={classes.Bio}>{bio}</p>
 
@@ -38,19 +38,19 @@ const HeaderAdditionalInfo = ({ location, email, company, repos, following, foll
         {location && <p>Location: {location}</p>}
         {email && <p>E-mail: {email}</p>}
         {company && <p>Company: {company}</p>}
-        {twitter && (
+        {twitterName && (
           <p>
             {" "}
             Twitter:{" "}
-            <a href={TWITTER_URL + twitter} className={classes.Link}>
+            <a href={normalizedTwitterAddress} rel="noreferrer" target="_blank" className={classes.Link}>
               {" "}
-              @{twitter}
+              @{twitterName}
             </a>{" "}
           </p>
         )}
         {blog && (
           <p>
-            <a href={blog} className={classes.Link}>
+            <a href={normalizedBlogAddress} rel="noreferrer" target="_blank" className={classes.Link}>
               {blog}
             </a>
           </p>

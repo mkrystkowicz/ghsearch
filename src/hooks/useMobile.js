@@ -14,7 +14,6 @@ const useMobile = () => {
       window.removeEventListener("resize", _.debounce(checkIfMobile), 300)
     }
   }, [])
-  console.log(mobile)
 
   return mobile
 }
