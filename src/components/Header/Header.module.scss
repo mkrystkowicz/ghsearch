@@ -52,6 +52,27 @@
       color: $emerald;
     }
 
+    & .Link {
+      color: $emerald;
+      transition: color 0.3s ease-out;
+      text-decoration: none;
+
+      &:hover {
+        color: $white;
+      }
+    }
+
+    & .Bio {
+      color: inherit;
+      letter-spacing: 0.1rem;
+      text-align: center;
+      margin-top: 2.5rem;
+
+      @include breakpoint(tablet, min) {
+        margin-top: 5rem;
+      }
+    }
+
     .HorizontalItems .ItemContainer:nth-child(2) {
       border-left: 1px dashed $gray;
       border-right: 1px dashed $gray;

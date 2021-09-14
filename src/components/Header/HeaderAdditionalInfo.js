@@ -3,19 +3,59 @@ import { motion } from "framer-motion"
 import PropTypes from "prop-types"
 import classes from "./Header.module.scss"
 
+const TWITTER_URL = `twitter.com/`
+
 const headerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 }
 
-const HeaderAdditionalInfo = ({ location, email, company, repos, following, followers, twitter }) => {
+const checkIfQuoted = string => {
+  if (
+    string.startsWith('"') ||
+    string.endsWith('"') ||
+    string.startsWith("'") ||
+    string.endsWith("'") ||
+    string.startsWith("`") ||
+    string.endsWith("`")
+  ) {
+    return true
+  }
+
+  return false
+}
+
+const HeaderAdditionalInfo = ({ location, email, company, repos, following, followers, twitter, blog, bio }) => {
+  const getQuotedBio = () => {
+    if (checkIfQuoted(bio)) return <p className={classes.Bio}>{bio}</p>
+
+    return <p className={classes.Bio}>{`"${bio}"`}</p>
+  }
+
   return (
     <motion.div initial="hidden" animate="visible" variants={headerVariants} className={classes.HeaderExpanded}>
       <div className={classes.VerticalItems}>
         {location && <p>Location: {location}</p>}
         {email && <p>E-mail: {email}</p>}
         {company && <p>Company: {company}</p>}
-        {twitter && <p>Twitter: @{twitter}</p>}
+        {twitter && (
+          <p>
+            {" "}
+            Twitter:{" "}
+            <a href={TWITTER_URL + twitter} className={classes.Link}>
+              {" "}
+              @{twitter}
+            </a>{" "}
+          </p>
+        )}
+        {blog && (
+          <p>
+            <a href={blog} className={classes.Link}>
+              {blog}
+            </a>
+          </p>
+        )}
+        {bio && getQuotedBio()}
       </div>
       <div className={classes.HorizontalItems}>
         <div className={classes.ItemContainer}>
@@ -43,6 +83,8 @@ HeaderAdditionalInfo.propTypes = {
   repos: PropTypes.number,
   following: PropTypes.number,
   followers: PropTypes.number,
+  blog: PropTypes.string,
+  bio: PropTypes.string,
 }
 
 HeaderAdditionalInfo.defaultProps = {
@@ -53,6 +95,8 @@ HeaderAdditionalInfo.defaultProps = {
   repos: 0,
   following: 0,
   followers: 0,
+  blog: "",
+  bio: "",
 }
 
 export default HeaderAdditionalInfo

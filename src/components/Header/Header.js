@@ -9,7 +9,20 @@ import isMobile from "../../helpers/isMobile"
 import Form from "../Form/Form"
 
 const Header = ({
-  userData: { avatarUrl, name, hireable, location, email, company, publicRepos, following, followers, twitterUsername },
+  userData: {
+    avatarUrl,
+    name,
+    hireable,
+    location,
+    email,
+    company,
+    publicRepos,
+    following,
+    followers,
+    twitterUsername,
+    blog,
+    bio,
+  },
   onSetUser,
 }) => {
   const mobile = isMobile()
@@ -32,6 +45,8 @@ const Header = ({
           following={following}
           followers={followers}
           twitter={twitterUsername}
+          blog={blog}
+          bio={bio}
         />
       )}
       {!isActive && mobile ? null : <Form onSubmit={onSetUser} color={colors.WHITE} />}

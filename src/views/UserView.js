@@ -41,7 +41,6 @@ const UserView = ({ onSetUser, userInfo }) => {
 UserView.propTypes = {
   userInfo: PropTypes.objectOf(PropTypes.any),
   onSetUser: PropTypes.func.isRequired,
-  // mobile: PropTypes.bool.isRequired,
 }
 
 UserView.defaultProps = {
