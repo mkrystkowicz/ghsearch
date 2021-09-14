@@ -3,6 +3,7 @@
 @import "../../assets/styles/mixins";
 
 .Input {
+  @include font;
   background: transparent;
   border: none;
   outline: none;
@@ -27,16 +28,7 @@
     color: $gray;
   }
 
-  @include breakpoint(mobile-lg, min) {
-    font-size: 1.5rem;
-  }
-
   @include breakpoint(tablet, min) {
-    font-size: 1.8rem;
     flex-basis: 70%;
-  }
-
-  @include breakpoint(desktop-lg, min) {
-    font-size: 2.2rem;
   }
 }

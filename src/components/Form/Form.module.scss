@@ -8,14 +8,10 @@
   width: 100%;
 
   & .ErrorMessage {
+    @include font;
     color: $red;
-    font-size: 1.2rem;
     margin-top: 1rem;
     width: inherit;
     text-align: center;
-
-    @include breakpoint(mobile-lg, min) {
-      font-size: 1.4rem;
-    }
   }
 }
