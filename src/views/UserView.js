@@ -1,5 +1,4 @@
 import React from "react"
-import _ from "lodash"
 import PropTypes from "prop-types"
 import {
   headerWrapperVariants,
@@ -11,10 +10,11 @@ import Wrapper from "../components/Wrapper/Wrapper"
 import colors from "../helpers/colors.contants"
 import classes from "./UserView.module.scss"
 import useMobile from "../hooks/useMobile"
+import getCamelledJSON from "../helpers/getCamelledJSON"
 
 const UserView = ({ onSetUser, userInfo }) => {
   const mobile = useMobile()
-  const userInfoCamelled = _.mapKeys(userInfo, (v, k) => _.camelCase(k))
+  const userInfoCamelled = getCamelledJSON(userInfo)
 
   return (
     <Wrapper
