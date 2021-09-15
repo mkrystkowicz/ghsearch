@@ -16,14 +16,18 @@
   }
 
   @include breakpoint(mobile-lg, min) {
+    margin: 6rem auto;
+  }
+
+  @include breakpoint(tablet, min) {
     position: absolute;
     top: 0;
     right: 0;
     width: 50%;
-    margin: 6rem auto;
   }
 
   @include breakpoint(laptop, min) {
     width: 70%;
+    justify-content: space-evenly;
   }
 }
