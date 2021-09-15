@@ -7,6 +7,7 @@ import Button from "../Form/Button"
 import classes from "./Header.module.scss"
 import isMobile from "../../helpers/isMobile"
 import Form from "../Form/Form"
+import GithubInfo from "../GithubInfo/GithubInfo"
 
 const Header = ({
   userData: {
@@ -50,6 +51,7 @@ const Header = ({
         />
       )}
       {!isActive && mobile ? null : <Form onSubmit={onSetUser} color={colors.WHITE} />}
+      {!isActive && mobile ? null : <GithubInfo logoColor={colors.WHITE} />}
     </header>
   )
 }

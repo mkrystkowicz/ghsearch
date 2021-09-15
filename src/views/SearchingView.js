@@ -12,6 +12,7 @@ import Form from "../components/Form/Form"
 import colors from "../helpers/colors.contants"
 import statuses from "../helpers/statuses.contants"
 import classes from "./SearchingView.module.scss"
+import GithubInfo from "../components/GithubInfo/GithubInfo"
 
 const SearchingView = ({ setIsSearching, onSetUser, status, error }) => {
   const handleFormSubmit = name => {
@@ -39,6 +40,7 @@ const SearchingView = ({ setIsSearching, onSetUser, status, error }) => {
           />
         )}
         {status === statuses.PENDING && <LoadingSpinner />}
+        <GithubInfo logoColor={colors.BLACK} />
       </Wrapper>
     </Wrapper>
   )

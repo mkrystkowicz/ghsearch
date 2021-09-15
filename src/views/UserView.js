@@ -15,13 +15,11 @@ import ReposList from "../components/Repos/ReposList"
 import useSearch from "../hooks/useSearch"
 import statuses from "../helpers/statuses.contants"
 import repoErrorData from "../helpers/repoErrorData"
-import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner"
 
 const UserView = ({ onSetUser, userInfo }) => {
   const mobile = useMobile()
   const userInfoCamelled = getCamelledJSON(userInfo)
   const { reposUrl } = userInfoCamelled
-  // eslint-disable-next-line
   const { status, value, error } = useSearch(reposUrl)
 
   return (
@@ -43,7 +41,6 @@ const UserView = ({ onSetUser, userInfo }) => {
         <Header onSetUser={onSetUser} userData={userInfoCamelled} />
       </Wrapper>
       {status === statuses.SUCCESS && value && <ReposList repos={value} />}
-      {status === statuses.PENDING && <LoadingSpinner />}
       {status === statuses.ERROR && error && <ReposList status={status} error={error} repos={repoErrorData} />}
     </Wrapper>
   )

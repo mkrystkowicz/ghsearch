@@ -1,0 +1,26 @@
+@import "../../assets/styles/mixins";
+
+.Info {
+  width: 100%;
+  text-align: center;
+  margin-top: 3rem;
+
+  & .Text {
+    display: inline;
+    font-size: 1rem;
+
+    @include breakpoint(desktop-lg, min) {
+      font-size: 1.5rem;
+    }
+  }
+
+  & .Logo {
+    width: 1rem;
+    margin-left: 0.5rem;
+
+    @include breakpoint(desktop-lg, min) {
+      width: 1.5rem;
+      margin-left: 1rem;
+    }
+  }
+}
