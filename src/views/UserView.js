@@ -12,11 +12,17 @@ import classes from "./UserView.module.scss"
 import useMobile from "../hooks/useMobile"
 import getCamelledJSON from "../helpers/getCamelledJSON"
 import ReposList from "../components/Repos/ReposList"
-import DUMMY_DATA from "../helpers/reposDummyData"
+import useSearch from "../hooks/useSearch"
+import statuses from "../helpers/statuses.contants"
+import repoErrorData from "../helpers/repoErrorData"
+// import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner"
 
 const UserView = ({ onSetUser, userInfo }) => {
   const mobile = useMobile()
   const userInfoCamelled = getCamelledJSON(userInfo)
+  const { reposUrl } = userInfoCamelled
+  // eslint-disable-next-line
+  const { status, value, error } = useSearch(reposUrl)
 
   return (
     <Wrapper
@@ -36,7 +42,8 @@ const UserView = ({ onSetUser, userInfo }) => {
       >
         <Header onSetUser={onSetUser} userData={userInfoCamelled} />
       </Wrapper>
-      <ReposList repos={DUMMY_DATA} />
+      {status === statuses.SUCCESS && value && <ReposList repos={value} />}
+      {status === statuses.ERROR && error && <ReposList status={status} error={error} repos={repoErrorData} />}
     </Wrapper>
   )
 }
