@@ -1,0 +1,29 @@
+@import "../../assets/styles/mixins";
+
+.ReposList {
+  @include flex(flex-start, space-around);
+  flex-wrap: wrap;
+  list-style: none;
+  width: 80%;
+  margin: 2rem auto;
+  height: 80vh;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include breakpoint(mobile-lg, min) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    margin: 6rem auto;
+  }
+
+  @include breakpoint(laptop, min) {
+    width: 70%;
+  }
+}

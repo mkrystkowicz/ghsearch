@@ -11,6 +11,8 @@ import colors from "../helpers/colors.contants"
 import classes from "./UserView.module.scss"
 import useMobile from "../hooks/useMobile"
 import getCamelledJSON from "../helpers/getCamelledJSON"
+import ReposList from "../components/Repos/ReposList"
+import DUMMY_DATA from "../helpers/reposDummyData"
 
 const UserView = ({ onSetUser, userInfo }) => {
   const mobile = useMobile()
@@ -34,6 +36,7 @@ const UserView = ({ onSetUser, userInfo }) => {
       >
         <Header onSetUser={onSetUser} userData={userInfoCamelled} />
       </Wrapper>
+      <ReposList repos={DUMMY_DATA} />
     </Wrapper>
   )
 }

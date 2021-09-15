@@ -1,0 +1,55 @@
+@import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
+
+.ItemWrapper {
+  box-shadow: rgba($black, 0.16) 0px 1px 4px;
+  border-radius: $border-radius;
+  transition: box-shadow 0.3s ease-out;
+  margin: 1rem;
+  cursor: pointer;
+  flex-basis: 100%;
+
+  &:hover {
+    box-shadow: rgba($black, 0.32) 0px 1px 4px;
+  }
+
+  @include breakpoint(mobile-lg, min) {
+    flex-basis: 40%;
+  }
+}
+
+.Item {
+  padding: 2rem;
+  @include font;
+  color: $black;
+
+  &:hover {
+    & .Name {
+      color: darken($emerald, 5%);
+    }
+
+    & .Description {
+      color: darken($black, 25%);
+    }
+
+    & .Language {
+      color: darken($gray, 20%);
+    }
+  }
+
+  & .Name {
+    color: $emerald;
+    transition: color 0.3s ease-out;
+  }
+
+  & .Description {
+    margin: 1rem 0;
+    transition: color 0.3s ease-out;
+  }
+
+  & .Language {
+    font-size: 1rem;
+    color: $gray;
+    transition: color 0.3s ease-out;
+  }
+}
