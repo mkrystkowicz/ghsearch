@@ -15,7 +15,7 @@ import ReposList from "../components/Repos/ReposList"
 import useSearch from "../hooks/useSearch"
 import statuses from "../helpers/statuses.contants"
 import repoErrorData from "../helpers/repoErrorData"
-// import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner"
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner"
 
 const UserView = ({ onSetUser, userInfo }) => {
   const mobile = useMobile()
@@ -43,6 +43,7 @@ const UserView = ({ onSetUser, userInfo }) => {
         <Header onSetUser={onSetUser} userData={userInfoCamelled} />
       </Wrapper>
       {status === statuses.SUCCESS && value && <ReposList repos={value} />}
+      {status === statuses.PENDING && <LoadingSpinner />}
       {status === statuses.ERROR && error && <ReposList status={status} error={error} repos={repoErrorData} />}
     </Wrapper>
   )
