@@ -1,3 +1,5 @@
+Github search app made to learn React and explore github's API
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
