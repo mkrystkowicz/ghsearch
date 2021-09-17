@@ -11,6 +11,7 @@
   margin: 1rem;
   cursor: pointer;
   flex-basis: 100%;
+  max-width: 90%;
 
   @include breakpoint(mobile-lg, min) {
     max-width: 40%;
