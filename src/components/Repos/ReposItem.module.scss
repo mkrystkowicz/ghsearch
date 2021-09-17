@@ -1,7 +1,10 @@
 @import "../../assets/styles/variables";
 @import "../../assets/styles/mixins";
 
-.ItemWrapper {
+.Item {
+  padding: 2rem;
+  @include font;
+  color: $black;
   box-shadow: rgba($black, 0.16) 0px 1px 4px;
   border-radius: $border-radius;
   transition: box-shadow 0.3s ease-out;
@@ -9,21 +12,14 @@
   cursor: pointer;
   flex-basis: 100%;
 
-  &:hover {
-    box-shadow: rgba($black, 0.32) 0px 1px 4px;
-  }
-
   @include breakpoint(mobile-lg, min) {
+    max-width: 40%;
     flex-basis: 40%;
   }
-}
-
-.Item {
-  padding: 2rem;
-  @include font;
-  color: $black;
 
   &:hover {
+    box-shadow: rgba($black, 0.32) 0px 1px 4px;
+
     & .Name {
       color: darken($emerald, 5%);
     }
@@ -49,6 +45,7 @@
   & .Description {
     margin: 1rem 0;
     transition: color 0.3s ease-out;
+    overflow-wrap: break-word;
   }
 
   & .Language {
