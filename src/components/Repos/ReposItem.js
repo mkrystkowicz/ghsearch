@@ -1,21 +1,18 @@
 import React from "react"
+import { motion } from "framer-motion"
 import PropTypes from "prop-types"
-import Wrapper from "../Wrapper/Wrapper"
-import colors from "../../helpers/colors.contants"
 import classes from "./ReposItem.module.scss"
 import statuses from "../../helpers/statuses.contants"
 
-const ReposItem = ({ name, description, language, error, status }) => {
+const ReposItem = ({ name, description, language, error, status, variants }) => {
   const nameClass = status === statuses.ERROR && error ? classes.NameErrored : classes.Name
 
   return (
-    <Wrapper className={classes.ItemWrapper} color={colors.WHITE}>
-      <li className={classes.Item}>
-        <h4 className={nameClass}>{name}</h4>
-        <p className={classes.Description}>{description}</p>
-        <span className={classes.Language}>{language}</span>
-      </li>
-    </Wrapper>
+    <motion.li variants={variants} className={classes.Item}>
+      <h4 className={nameClass}>{name}</h4>
+      <p className={classes.Description}>{description}</p>
+      <span className={classes.Language}>{language}</span>
+    </motion.li>
   )
 }
 
@@ -25,6 +22,7 @@ ReposItem.propTypes = {
   description: PropTypes.string,
   error: PropTypes.shape(PropTypes.any),
   status: PropTypes.string,
+  variants: PropTypes.shape(PropTypes.any).isRequired,
 }
 
 ReposItem.defaultProps = {
